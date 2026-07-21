@@ -9,7 +9,9 @@ export class CartPage{
         await this.page.goto('https://automationexercise.com/view_cart')
     }
     async isProductInCart(){
-        return await this.cartItem.isVisible() 
+        await this.page.waitForSelector('#product-1', { timeout: 10000 })
+        return await this.cartItem.isVisible()
+}
     }
     async deleteProduct(){
        await this.deleteButton.click()
