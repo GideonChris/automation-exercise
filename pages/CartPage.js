@@ -12,7 +12,7 @@ export class CartPage{
         await this.page.waitForSelector('#product-1', { timeout: 10000 })
         return await this.cartItem.isVisible()
 }
-    }
+   
     async deleteProduct(){
        await this.deleteButton.click()
        await this.page.waitForSelector('#product-1', { state: 'hidden' })
