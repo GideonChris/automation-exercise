@@ -6,7 +6,7 @@ export class ProductPage {
     this.searchButton = page.locator('#submit_search')
     this.productList = page.locator('.productinfo')
     this.addToCartButton = page.locator('.add-to-cart[data-product-id="1"]')
-    this.viewCartLink = page.locator('a[href="/view_cart"]').first()
+    this.viewCartLink = page.getByText('View Cart')
   }
 
   async navigate() {
@@ -26,7 +26,8 @@ export class ProductPage {
     return await this.page.getByText(productName).first().isVisible()
   }
   async addProductToCart() {
-  await this.addToCartButton.first().click()
-  await this.viewCartLink.click()
+    await this.addToCartButton.first().click()
+    await this.viewCartLink.click()
+    await this.page.waitForURL('**/view_cart')
 }
 }
